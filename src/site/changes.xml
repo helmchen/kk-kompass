@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document xmlns="http://maven.apache.org/changes/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+
+    <properties>
+        <title>Changes-Log</title>
+    </properties>
+
+    <body>
+        <release version="1.0.0" date="10.08.2012" description="WIP  - Aktueller Snappshot">
+            <action dev="uid18813" type="add" date="10.08.2012">
+                Initial-Release: Neue Webapplikation für Ärztesuche.
+            </action>
+        </release>
+    </body>
+</document>

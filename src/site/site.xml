@@ -1,0 +1,92 @@
+<project
+    xmlns="http://maven.apache.org/DECORATION/1.4.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.4.0 http://maven.apache.org/xsd/decoration-1.4.0.xsd"
+    name="Krankenkassenkompass" >
+    <!--
+   <bannerLeft>
+       <name/>
+       <src/>
+       <alt/>
+       <href/>
+       <border/>
+       <width/>‡
+       <height/>
+       <title/>
+   </bannerLeft>
+    -->
+    <bannerRight>
+        <name>compass Logo</name>
+        <src>kk_logo.png</src>
+        <alt>Logo</alt>
+        <!--
+        <href/>
+        <border/>
+        <width/>
+        <height/>
+        <title/> -->
+    </bannerRight>
+    <publishDate position="right" format="dd.MM.yyyy" />
+    <version position="right" />
+    <!--
+    <poweredBy>
+        <logo name=.. href=.. img=.. position=.. alt=.. border=.. width=.. height=.. target=.. title=.. />
+    </poweredBy>
+    -->
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.3.0</version>
+    </skin>
+    
+    <body>
+        <head/>
+        <links>
+            <item name="Live System" href="http://kk-cockpit.ch"  />
+        </links>
+        <breadcrumbs>
+            <item name="Projekt-Dokumentation" href="/"/>
+        </breadcrumbs>
+        
+        <menu name="Übersicht" inherit="top">
+            <item name="Startseite" href="index.html"/>
+            <item name="Ziele" href="mission.html"/>
+            <item name="Release Notes" href="changes-report.html" />
+        </menu>
+        <menu name="Dokumentation" inherit="top" >
+            <item name="Daten" href="data.html" collapse="true">
+                <item name="Herkunft" href="data-sources.html" />
+                <item name="Aufbereitung" href="data-preparation.html" />
+                <item name="Modell" href="data-model.html" />
+            </item>
+            <!--
+        <item collapse=.. ref=.. name=.. href=.. img=.. position=.. alt=.. border=.. width=.. height=.. target=.. title=.. >
+            <description/>
+            <item>...recursion...<item>
+            </item> -->
+        </menu>
+        <menu name="Berichte" inherit="top" inheritAsRef="true" ref="reports" />
+                                       
+        <footer/>
+    </body>
+            
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>false</topBarEnabled>
+            <sideBarEnabled>true</sideBarEnabled>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+            <gitHub>
+                <projectId>99soft/backport-spi</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>blue</ribbonColor>
+            </gitHub>
+            <twitter>
+                <user>helmchenx</user>
+                <showUser>true</showUser>
+                <showFollowers>true</showFollowers>
+            </twitter>
+            <facebookLike />
+            <googlePlusOne />
+        </fluidoSkin>
+    </custom>
+</project>

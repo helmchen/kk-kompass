@@ -1,0 +1,37 @@
+h1. Datenmodell
+
+{toc}
+
+h2. Gesamtmodell
+
+h2. Datendomänen
+
+h3. Metadaten
+
+h3. geografische Informationen
+
+h3. Versicherer
+
+h3. Prämiendaten
+
+h3. Prämienverwendung
+
+h2. Generelle Konzepte
+
+h3. Historisierung
+Die Daten werden historisiert gehalten. Normalerweise sind sie über jeweils ein Jahr hinweg gültig,
+einzelne Domänen, wie beispielsweise die geografischen Informationen können aber auch andere Gültigkeiten
+haben. 
+
+Die History gilt jeweils immer für alle Ausprägungen einer Tabelle, d.H. bei einer Änderung wird jeweils
+alles zu der gewünschten Gültigkeit neu geladen.
+
+Zur Behandlung der History wird mit Versionen gearbeitet. In den Metadaten werden zu allen Tabellen die 
+Versioninformationen
+- Versionsnummer, 
+- gültig-von - bis, 
+- Verfügbar 
+hinterlegt. Die einzelnen Records enthalten dann aber nur noch die entsprechende Versionsnummer.
+
+Für einen Zugriff mit Stichdatum sind somit zwei Zugriffe auf das Datenmodell nötig. Ein erster zur Ermittlung
+der Versionnummer, ein zweiter für die wirklichen Daten.
