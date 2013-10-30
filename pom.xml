@@ -54,7 +54,7 @@
 
     <!-- GitHub Software Configuration Management -->
     <scm>
-        <url>https://github.com/arey/maven-config-github-cloudbees</url>
+        <url>https://github.com/helmchen/kk-kompass</url>
         <connection>scm:git:ssh://git@github.com:helmchen/kk-kompass.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:helmchen/kk-kompass.git</developerConnection>
     </scm>
