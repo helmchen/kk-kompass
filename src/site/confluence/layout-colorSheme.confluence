@@ -1,0 +1,90 @@
+h1. Farbschema
+
+Verwendetes Farbschema für die Website.
+
+h2. #666699
+
+!images/tile_666699.png!
+
+* Codes: 
+** Hexadezimal #666699
+** Dezimal RGB 
+* Verwendung:
+** normale Textfarbe
+
+{color:#666699}Weit hinten, hinter den Wortbergen fern der Länder Vokalien und 
+Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an 
+der Küste des Semantik.{color}
+
+h2. #0000ff
+
+!images/tile_0000ff.png!
+
+* Codes: 
+** Hexadezimal #0000ff
+** Dezimal RGB 
+* Verwendung:
+** unbesuchte Links
+** Füllwert für Karte (höchster Wert)
+
+{color:#666699}Weit hinten, hinter den 
+{color:#0000ff}Wortbergen 
+{color:#666699}fern der Länder Vokalien und Konsonantien leben die Blindtexte. 
+Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik.{color}
+
+h2. #6666cc
+
+!images/tile_6666cc.png!
+
+* Codes: 
+** Hexadezimal #6666cc
+** Dezimal RGB 
+* Verwendung:
+** besuchter Link
+** Grenzlinien auf Karte
+
+{color:#666699}Weit hinten, hinter den 
+{color:#0000ff}Wortbergen 
+{color:#666699}fern der Länder Vokalien und Konsonantien leben die 
+{color:#6666cc}Blindtexte. 
+{color:#666699}Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik.{color}
+
+h2. #cccccc
+
+!images/tile_cccccc.png!
+
+* Codes: 
+** Hexadezimal #cccccc
+** Dezimal RGB 
+* Verwendung:
+** aktiver Link
+** Trennlinie Header / Content / Footer
+** Hintergrund Panels
+
+{color:#666699}Weit hinten, hinter den 
+{color:#0000ff}Wortbergen 
+{color:#666699}fern der Länder Vokalien und Konsonantien leben die 
+{color:#6666cc}Blindtexte. 
+{color:#666699}Abgeschieden wohnen Sie in Buchstabhausen an der Küste des 
+{color:#cccccc}Semantik.{color}
+
+h2. #ffffff
+
+!images/tile_ffffff.png!
+
+* Codes: 
+** Hexadezimal #ffffff
+** Dezimal RGB 
+* Verwendung:
+** Hintergrund Container
+
+h2. #ccffff
+
+!images/tile_ccffff.png!
+
+* Codes: 
+** Hexadezimal #ccffff
+** Dezimal RGB 
+* Verwendung:
+** Hintergrund Footer / Header
+

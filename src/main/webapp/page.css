@@ -1,0 +1,34 @@
+/*
+Copyright 2013 helmut.
+Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in
+compliance with the License. Obtain your copy at http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under the License
+is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing permissions and limitations.
+*/
+/* 
+    Created on : 30.10.2013, 19:56:54
+    Author     : helmut
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,100);
+
+html {
+    font-family: ‘Raleway’, Helvetic, Arial, sans-serif; 
+    background-color: #ccffff;
+}
+
+#map {
+    background-color: #ffffff;
+    border: #cccccc solid 2px;
+    border-radius: 5px;
+}
+h1 { 
+    font-family: ‘Raleway’, Helvetic, Arial, sans-serif; 
+    font-weight: 100; 
+    text-shadow: 4px 4px 4px #aaa;
+}
+p { 
+    font-family: ‘Raleway’, Helvetic, Arial, sans-serif; 
+    font-weight: 400; 
+}

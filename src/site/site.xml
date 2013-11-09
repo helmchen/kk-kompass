@@ -17,7 +17,7 @@
     -->
     <bannerRight>
         <name>compass Logo</name>
-        <src>kk_logo.png</src>
+        <src>images/kk_kompass_logo.png</src>
         <alt>Logo</alt>
         <!--
         <href/>
@@ -58,6 +58,10 @@
                 <item name="Herkunft" href="data-sources.html" />
                 <item name="Aufbereitung" href="data-preparation.html" />
                 <item name="Modell" href="data-model.html" />
+            </item>
+            <item name="Layout" href="layout.html" collapse="true">
+                <item name="Nutzerführung" href="layout-sketches.html" />
+                <item name="Farbschema" href="layout-colorSheme.html" />
             </item>
             <!--
         <item collapse=.. ref=.. name=.. href=.. img=.. position=.. alt=.. border=.. width=.. height=.. target=.. title=.. >
