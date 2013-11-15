@@ -204,9 +204,11 @@
 
         <!-- Checks for class design                         -->
         <!-- See http://checkstyle.sf.net/config_design.html -->
-        <module name="DesignForExtension">
+        <!-- deaktiviert.
+        <module name="DesignForExtension" >
             <property name="severity" value = "info" />
         </module>
+        -->
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
