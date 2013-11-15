@@ -85,9 +85,9 @@ public class PoliticalStructureTest {
     public void testPropertyLevel() {
         System.out.println("getVersion");
         PoliticalStructure instance = new PoliticalStructure();
-        int expResult = 3;
+        StructureDepth expResult = StructureDepth.COMMUNITY;
         instance.setLevel(expResult);
-        int result = instance.getLevel();
+        StructureDepth result = instance.getLevel();
         assertEquals(expResult, result);
     }
 
@@ -118,43 +118,5 @@ public class PoliticalStructureTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of getLatitude method, of class PoliticalStructure.
-     */
-    @Test
-    public void testPropertyLatitude() {
-        System.out.println("getLatitude");
-        PoliticalStructure instance = new PoliticalStructure();
-        Double expResult = 47.15d;
-        instance.setLatitude(expResult);
-        Double result = instance.getLatitude();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getLongitude method, of class PoliticalStructure.
-     */
-    @Test
-    public void testPropertyLongitude() {
-        System.out.println("getLongitude");
-        PoliticalStructure instance = new PoliticalStructure();
-        Double expResult = 7.6901d;
-        instance.setLongitude(expResult);
-        Double result = instance.getLongitude();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getAccuracy method, of class PoliticalStructure.
-     */
-    @Test
-    public void testPropertyAccuracy() {
-        System.out.println("getAccuracy");
-        PoliticalStructure instance = new PoliticalStructure();
-        Short expResult = 1;
-        instance.setAccuracy(expResult);
-        Short result = instance.getAccuracy();
-        assertEquals(expResult, result);
-    }
 
 }

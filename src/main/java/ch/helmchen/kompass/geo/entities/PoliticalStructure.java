@@ -35,14 +35,11 @@ public class PoliticalStructure {
     @XmlAttribute
     private int version;
     @NotNull
-    private int level;
+    private StructureDepth level;
     @NotNull
     private String code;
     @NotNull
     private String name;
-    private Double latitude;
-    private Double longitude;
-    private Short accuracy;
 
     /**
      *
@@ -98,11 +95,11 @@ public class PoliticalStructure {
         version = aVersion;
     }
 
-    public int getLevel() {
+    public StructureDepth getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(StructureDepth level) {
         this.level = level;
     }
 
@@ -138,54 +135,6 @@ public class PoliticalStructure {
         name = aName;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    /**
-     *
-     * @param aLatitude
-     */
-    public void setLatitude(final Double aLatitude) {
-        latitude = aLatitude;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    /**
-     *
-     * @param aLongitude
-     */
-    public void setLongitude(final Double aLongitude) {
-        longitude = aLongitude;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Short getAccuracy() {
-        return accuracy;
-    }
-
-    /**
-     *
-     * @param anAccuracy
-     */
-    public void setAccuracy(final Short anAccuracy) {
-        accuracy = anAccuracy;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -207,11 +156,5 @@ public class PoliticalStructure {
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "PoliticalStructure{" + "id=" + id + ", structureNumber=" + structureNumber + ", version=" + version + ", level=" + level + ", code=" + code + ", name=" + name + ", latitude=" + latitude + ", longitude=" + longitude + ", accuracy=" + accuracy + '}';
-    }
-
- 
+    
 }
