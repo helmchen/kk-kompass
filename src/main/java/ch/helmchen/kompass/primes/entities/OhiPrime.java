@@ -9,6 +9,9 @@
 package ch.helmchen.kompass.primes.entities;
 
 import ch.helmchen.kompass.insurance.entities.FophNumber;
+import ch.helmchen.kompass.meta.ApplicationInfo;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -254,8 +257,21 @@ public class OhiPrime {
 
     @Override
     public String toString() {
-        return "OhiPrime{" + "id=" + id + ", fophNumber=" + fophNumber + ", version=" + version + ", type=" + type + ", tariffName=" + tariffName + ", tariffOrder=" + tariffOrder + ", limited=" + limited + ", ohiZone=" + ohiZone + ", ageFrom=" + ageFrom + ", ageUntil=" + ageUntil + ", withAccident=" + withAccident + ", franchise=" + franchise + ", prime=" + prime + '}';
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("id", id);
+        properties.put("fophNumber", fophNumber);
+        properties.put("version", version);
+        properties.put("type", type);
+        properties.put("tariffName", tariffName);
+        properties.put("tariffOrder", tariffOrder);
+        properties.put("limited", limited);
+        properties.put("ohiZone", ohiZone);
+        properties.put("ageFrom", ageFrom);
+        properties.put("ageUntil", ageUntil);
+        properties.put("withAccident", withAccident);
+        properties.put("franchise", franchise);
+        properties.put("prime", prime);
+        return ApplicationInfo.toString(this, properties);
     }
-    
-    
+
 }

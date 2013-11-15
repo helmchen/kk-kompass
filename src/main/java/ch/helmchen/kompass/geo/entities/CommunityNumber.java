@@ -8,8 +8,11 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
+import ch.helmchen.kompass.meta.ApplicationInfo;
 import ch.helmchen.kompass.util.AlphanumericKey;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -103,7 +106,9 @@ public class CommunityNumber implements Locatable, Serializable {
 
     @Override
     public String toString() {
-        return "CommunityNumber{" + "value=" + value + '}';
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("value", value);
+        return ApplicationInfo.toString(this, properties);
     }
 
     private static String toRightSize(final String aString) {

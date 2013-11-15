@@ -4,10 +4,13 @@
  */
 package ch.helmchen.kompass.insurance.entities;
 
+import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -312,7 +315,20 @@ public class InsuranceProvider implements Serializable {
 
     @Override
     public String toString() {
-        return "InsuranceProvider{" + "id=" + id + ", fophNumber=" + fophNumber + ", version=" + version + ", name=" + name + ", legalForm=" + legalForm + ", holdingId=" + holdingId + ", addresses=" + addresses + ", phoneContacts=" + phoneContacts + ", emailAddresses=" + emailAddresses + ", homePage=" + homePage + ", imagePath=" + imagePath + ", cdColor=" + cdColor + '}';
-    }
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("id", id);
+        properties.put("fophNumber", fophNumber);
+        properties.put("version", version);
+        properties.put("name", name);
+        properties.put("legalForm", legalForm);
+        properties.put("holdingId", holdingId);
+        properties.put("addresses", addresses);
+        properties.put("phoneContacts", phoneContacts);
+        properties.put("emailAddressesd", emailAddresses);
+        properties.put("homePage", homePage);
+        properties.put("imagePath", imagePath);
+        properties.put("cdColor", cdColor);
+        return ApplicationInfo.toString(this, properties);
+   }
 
 }

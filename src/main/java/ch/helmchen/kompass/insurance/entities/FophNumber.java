@@ -7,6 +7,8 @@ package ch.helmchen.kompass.insurance.entities;
 import ch.helmchen.kompass.meta.ApplicationInfo;
 import ch.helmchen.kompass.util.AlphanumericKey;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The official Number for inurance providers in Switzerland. This number is maintained by the
@@ -129,7 +131,9 @@ public class FophNumber implements Serializable, Comparable<FophNumber> {
 
     @Override
     public String toString() {
-        return "FophNumber{" + "value=" + value + '}';
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("value", value);
+        return ApplicationInfo.toString(this, properties);
     }
 
    

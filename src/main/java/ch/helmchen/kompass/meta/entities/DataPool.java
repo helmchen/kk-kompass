@@ -11,6 +11,8 @@ package ch.helmchen.kompass.meta.entities;
 import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -149,6 +151,7 @@ public class DataPool implements Serializable {
 
     /**
      * Liefert die Versionsnummer.
+     *
      * @return Versionsnummer.
      */
     public int getVersion() {
@@ -157,6 +160,7 @@ public class DataPool implements Serializable {
 
     /**
      * Setzt die Versionsnummer.
+     *
      * @param aVersion Versionsnummer.
      */
     public void setVersion(final int aVersion) {
@@ -165,6 +169,7 @@ public class DataPool implements Serializable {
 
     /**
      * Liefert das Datum des Gültigkeitsbeginns dieser Version.
+     *
      * @return gültig ab der Version
      */
     public Date getValidFrom() {
@@ -173,6 +178,7 @@ public class DataPool implements Serializable {
 
     /**
      * Setzt das Datum des Gültigkeitsgebinns dieser Version.
+     *
      * @param aValidFrom gültig ab
      */
     public void setValidFrom(final Date aValidFrom) {
@@ -181,6 +187,7 @@ public class DataPool implements Serializable {
 
     /**
      * Liefert das Datum des Gültigkeitsendes dieser Version.
+     *
      * @return gültig bis der Version.
      */
     public Date getValidUntil() {
@@ -189,6 +196,7 @@ public class DataPool implements Serializable {
 
     /**
      * Setzt das Datum des Gültigkeitsendes dieser Version.
+     *
      * @param aValidUntil Gültig-Bis-Datum dieser Version
      */
     public void setValidUntil(final Date aValidUntil) {
@@ -197,6 +205,7 @@ public class DataPool implements Serializable {
 
     /**
      * Liefert die Lizenz.
+     *
      * @return Lizenz, unter welcher die Daten veröffentlicht sind.
      */
     public License getLicense() {
@@ -205,6 +214,7 @@ public class DataPool implements Serializable {
 
     /**
      * Setzt die Lizenz.
+     *
      * @param aLicense Lizenz unter welcher die Daten veröffentlicht wurden.
      */
     public void setLicense(final License aLicense) {
@@ -212,11 +222,12 @@ public class DataPool implements Serializable {
     }
 
     /**
-     * Liefert zurück, ob diese Version gesperrt ist. Während eines Ladelaufs kann eine Version
-     * für die Verwendung gesperrt werden, bis das ganze Dataset vorhanden ist. Dann können die 
-     * Daten u.U. nicht angezeigt werden.
+     * Liefert zurück, ob diese Version gesperrt ist. Während eines Ladelaufs kann eine Version für
+     * die Verwendung gesperrt werden, bis das ganze Dataset vorhanden ist. Dann können die Daten u.U.
+     * nicht angezeigt werden.
+     *
      * @return <ul><li><tt>true</tt>: Version ist gesperrt und sollte nicht verwendet werden.</li>
-     *         <li><tt>false</tt>: Version ist für die Nutzung freigegeben.</li></ul>
+     * <li><tt>false</tt>: Version ist für die Nutzung freigegeben.</li></ul>
      */
     public boolean isLocked() {
         return locked;
@@ -224,6 +235,7 @@ public class DataPool implements Serializable {
 
     /**
      * Definiert, ob diese Version der Datensammlung für die Verwendung gesperrt ist.
+     *
      * @param isLocked Version gesperrt?
      */
     public void setLocked(final boolean isLocked) {
@@ -232,6 +244,7 @@ public class DataPool implements Serializable {
 
     /**
      * Liefert den Lizenzgeber der Datensammlung.
+     *
      * @return Name des Lizenzgebers
      */
     public String getLicenser() {
@@ -240,6 +253,7 @@ public class DataPool implements Serializable {
 
     /**
      * Setzt den Namen des Lizenzgebers.
+     *
      * @param aLicenser Lizenzgeber.
      */
     public void setLicenser(final String aLicenser) {
@@ -248,6 +262,7 @@ public class DataPool implements Serializable {
 
     /**
      * Liefert das Datum, wann diese Version der Datenquelle geladen worden ist.
+     *
      * @return Ladedatum.
      */
     public Date getLoadedAt() {
@@ -256,6 +271,7 @@ public class DataPool implements Serializable {
 
     /**
      * Setzt das Datum, wann diese Version der Datenquelle geladen worden ist.
+     *
      * @param aLoadedAt Ladedatum.
      */
     public void setLoadedAt(final Date aLoadedAt) {
@@ -286,9 +302,16 @@ public class DataPool implements Serializable {
 
     @Override
     public String toString() {
-        return "DataPool{" + "datapoolId=" + datapoolId + ", dataPoolType=" + dataPoolType
-                + ", version=" + version + ", validFrom=" + validFrom + ", validUntil=" + validUntil
-                + ", license=" + license + ", locked=" + locked + ", licenser=" + licenser
-                + ", loadedAt=" + loadedAt + '}';
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("datapoolId", datapoolId);
+        properties.put("dataPoolType", dataPoolType);
+        properties.put("version", version);
+        properties.put("validFrom", validFrom);
+        properties.put("validUntil", validUntil);
+        properties.put("license", license);
+        properties.put("locked", locked);
+        properties.put("licenser", licenser);
+        properties.put("loadedAt", loadedAt);
+        return ApplicationInfo.toString(this, properties);
     }
 }

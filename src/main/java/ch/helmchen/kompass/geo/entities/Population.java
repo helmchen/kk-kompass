@@ -8,6 +8,9 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
+import ch.helmchen.kompass.meta.ApplicationInfo;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -215,11 +218,17 @@ public class Population {
 
     @Override
     public String toString() {
-        return "Population{" + "id=" + id + ", structureNumber=" + structureNumber 
-                + ", version=" + version + ", totalCount=" + totalCount 
-                + ", maleCount=" + maleCount + ", femaleCount=" + femaleCount 
-                + ", childrenCount=" + childrenCount + ", teenCount=" + teenCount 
-                + ", adultCount=" + adultCount + '}';
+       final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("id", id);
+        properties.put("structureNumber", structureNumber);
+        properties.put("version", version);
+        properties.put("totalCount", totalCount);
+        properties.put("maleCount", maleCount);
+        properties.put("femaleCount", femaleCount);
+        properties.put("childrenCount", childrenCount);
+        properties.put("teenCount", teenCount);
+        properties.put("adultCount", adultCount);
+        return ApplicationInfo.toString(this, properties);
     }
 
 }

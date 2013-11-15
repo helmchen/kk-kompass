@@ -2,7 +2,7 @@
  * Copyright 2013 Helmut Gehrer.
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in
  * compliance with the License. Obtain your copy at http://www.apache.org/licenses/LICENSE-2.0 .
- * Unless required by applicable law or agreed to in writing, software distributed under the License  
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
  * implied. See the License for the specific language governing permissions and limitations.
  */
@@ -33,7 +33,7 @@ public enum Country implements Locatable {
     /**
      * Liefert anhand der Geo-Id (aus geoJson) das Land zurück.
      *
-     * @param aGeoId  Geoid des Landes.
+     * @param aGeoId Geoid des Landes.
      * @return
      */
     public static Country fromGeoId(final int aGeoId) {
@@ -47,7 +47,8 @@ public enum Country implements Locatable {
 
     /**
      * Liefert anhand des Iso-Codes das Land zurück.
-     * @param anIso3166  Iso-Code
+     *
+     * @param anIso3166 Iso-Code
      * @return Land zum Iso-Code
      * @throws IllegalArgumentException, falls nichts esistiert.
      */
@@ -63,7 +64,8 @@ public enum Country implements Locatable {
 
     /**
      * Liefert das Land anhand des DB-KEys.
-     * @param aRecordKey  D-Key
+     *
+     * @param aRecordKey D-Key
      * @return Country.
      */
     public static Country fromDbKey(final String aRecordKey) {
@@ -87,8 +89,9 @@ public enum Country implements Locatable {
     }
 
     /**
+     * Liefert den Ländercode als zweistelligen, alphanumerischen ISO3166-Wert.
      *
-     * @return
+     * @return ISO2-Code
      */
     public String asIso3166() {
         return iso3166;

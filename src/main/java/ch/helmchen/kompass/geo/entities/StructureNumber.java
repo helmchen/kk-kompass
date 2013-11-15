@@ -8,7 +8,10 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
+import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.StringTokenizer;
 import javax.persistence.Column;
@@ -183,7 +186,9 @@ public class StructureNumber implements Serializable {
 
     @Override
     public String toString() {
-        return "StructureNumber{" + "value=" + value + '}';
+        Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("value", value);
+        return ApplicationInfo.toString(this, properties);
     }
 
 }

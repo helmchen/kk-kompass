@@ -8,8 +8,11 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
+import ch.helmchen.kompass.meta.ApplicationInfo;
 import ch.helmchen.kompass.meta.Versionable;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -169,9 +172,13 @@ public class Community implements Serializable, Versionable {
 
     @Override
     public String toString() {
-        return "Community{" + "id=" + id + ", communityNumber=" + communityNumber
-                + ", version=" + version + ", structureNumber=" + structureNumber
-                + ", ohiZone=" + ohiZone + '}';
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("id", id);
+        properties.put("communityNumber", communityNumber);
+        properties.put("version", version);
+        properties.put("structureNumber", structureNumber);
+        properties.put("ohiZone", ohiZone);
+        return ApplicationInfo.toString(this, properties);
     }
 
 }

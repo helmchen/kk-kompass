@@ -4,13 +4,17 @@
  */
 package ch.helmchen.kompass.insurance.entities;
 
+import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author helmut
  */
 public class TelecomContact extends Contact implements Serializable {
+
     private String characteristics;
     private String value;
 
@@ -48,8 +52,11 @@ public class TelecomContact extends Contact implements Serializable {
 
     @Override
     public String toString() {
-        return "TelecomContact{" + "usage=" + usage + ", characteristics=" + characteristics + ", value=" + value + '}';
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("usage", usage);
+        properties.put("characteristics", characteristics);
+        properties.put("value", value);
+        return ApplicationInfo.toString(this, properties);
     }
-    
-    
+
 }

@@ -8,6 +8,9 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
+import ch.helmchen.kompass.meta.ApplicationInfo;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -143,7 +146,7 @@ public class PoliticalStructure {
     }
 
     /**
-     * Liefert den Namen
+     * Liefert den Namen.
      *
      * @return Name des Elements.
      */
@@ -184,9 +187,14 @@ public class PoliticalStructure {
 
     @Override
     public String toString() {
-        return "PoliticalStructure{" + "id=" + id + ", structureNumber=" + structureNumber 
-                + ", version=" + version + ", level=" + level + ", code=" + code 
-                + ", name=" + name + '}';
+        final Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put("id", id);
+        properties.put("structureNumber", structureNumber);
+        properties.put("version", version);
+        properties.put("level", level);
+        properties.put("code", code);
+        properties.put("name", name);
+        return ApplicationInfo.toString(this, properties);
     }
 
 }

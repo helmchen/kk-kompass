@@ -21,10 +21,10 @@ public abstract class Contact {
 
     /**
      *
-     * @param usage
+     * @param aUsage
      */
-    public void setUsage(ContactUsage usage) {
-        this.usage = usage;
+    public void setUsage(ContactUsage aUsage) {
+        usage = aUsage;
     }
     
     
