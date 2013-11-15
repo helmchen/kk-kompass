@@ -100,10 +100,9 @@ public class ApplicationInfo extends Application{
      */
     public static void debug(Class aClass, Marker aMarker, String aKey, Object... theValues) {
         Logger logger = LoggerFactory.getLogger(aClass);
- //       if (logger.isDebugEnabled(aMarker)) {
-           // System.out.println(getMessage(aMarker, aKey));
-            logger.info(aMarker, getMessage(aMarker, aKey), theValues);
- //       }
+        if (logger.isDebugEnabled(aMarker)) {
+            logger.debug(aMarker, getMessage(aMarker, aKey), theValues);
+        }
     }
 
     /**
@@ -115,10 +114,23 @@ public class ApplicationInfo extends Application{
      */
     public static void info(Class aClass, Marker aMarker, String aKey, Object... theValues) {
         Logger logger = LoggerFactory.getLogger(aClass);
-  //      if (logger.isInfoEnabled(aMarker)) {
-            //System.out.println(getMessage(aMarker, aKey));
+        if (logger.isInfoEnabled(aMarker)) {
             logger.info(aMarker, getMessage(aMarker, aKey), theValues);
-  //      }
+        }
+    }
+
+    /**
+     *
+     * @param aClass
+     * @param aMarker
+     * @param aKey
+     * @param theValues
+     */
+    public static void warn(Class aClass, Marker aMarker, String aKey, Object... theValues) {
+        Logger logger = LoggerFactory.getLogger(aClass);
+        if (logger.isWarnEnabled(aMarker)) {
+            logger.warn(aMarker, getMessage(aMarker, aKey), theValues);
+        }
     }
 
     /**

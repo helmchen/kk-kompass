@@ -8,7 +8,6 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
-import static ch.helmchen.kompass.geo.entities.Canton.values;
 import ch.helmchen.kompass.util.AlphanumericKey;
 
 /**

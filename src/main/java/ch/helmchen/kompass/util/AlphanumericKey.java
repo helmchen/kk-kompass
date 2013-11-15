@@ -43,17 +43,26 @@ public class AlphanumericKey {
      * @param aSize
      * @return
      */
-    public static String asKey(String aString, int aSize) {
-        if (aString == null) {
+    public static String asKey(String aString, int aSize) throws NumberFormatException {
+        if (aString == null || aString.isEmpty()) {
             return null;
         }
 
-        StringBuilder result = new StringBuilder(aString.trim());
-        while (result.length() > aSize) {
-            // String is to long: deleting left hand side
-            ApplicationInfo.debug(AlphanumericKey.class, ApplicationInfo.VALIDATION, "removingFromOversized", result, result.charAt(0));
-            result.deleteCharAt(0);
+        int checkPositive = Integer.parseInt(aString);
+        if (checkPositive == 0) {
+            // 0 wird gleich behandelt wie leer, oder null.
+            return null;
         }
+        if (checkPositive < 0) {
+            throw new NumberFormatException("Only positive values are allowed as keys. '"
+                    + aString + "' does not apply to this rule.");
+        }
+        StringBuilder result = new StringBuilder(aString.trim());
+        if (result.length() > aSize) {
+            throw new NumberFormatException("This key allows a maximum size of " + aSize + ". "
+                    + "The value '" + aString + "' is to long.");
+        }
+
         while (result.length() < aSize) {
             // String is to short: adding Zeroes to the left.
             ApplicationInfo.debug(AlphanumericKey.class, ApplicationInfo.VALIDATION, "addingToUndersized", result, "0");

@@ -1,1 +1,36 @@
-h1. Datenherkunft
+h1. REST API
+h2. Metadaten
+
+h2. Versicherungsdaten
+
+h2. Daten für die Aufbereitung der Landkarte
+
+h2. Statistiken
+h3. Entwicklung Prämien
+h4. Aufruf
+{code}
+get statistics/primeHistory?fophNr=1555,1568&fromYear=2010&untilYear=2012
+{code}
+h4. Antwort
+{code}
+{"primeHistory":
+    {"insuranceCompany": 
+        {"fophNr":"1555"}
+        {"cdDolor": "#ff0000"} 
+        {"primes":
+            {"2010":"352.50"}
+            {"2011":"402.70"}
+            {"2012":"414.90"}
+        }
+    }
+    {"insuranceCompany": 
+        {"fopnNr": "1568"}
+        {"cdColor": "#ff0000"} 
+        {"primes":
+            {"2010":"302.00"}
+            {"2011":"382.70"}
+            {"2012":"394.00"}
+        }
+    }
+}
+{code}

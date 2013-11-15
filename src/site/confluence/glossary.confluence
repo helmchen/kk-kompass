@@ -1,8 +1,6 @@
-h1. Layout
+h1. Glossar
 
-Die Seiten dieses Kapitels dokumentieren die Ideen hinter der Nutzerführung, und
-dem Design der Anwendung
-
-|| Dokument || Beschreibung ||
-| [Erste Skizzen|layout-sketches.html] | Erste Entwürfe der Benutzeroberfläche |
-| [Farbschema|layout-sketches.html] | Verwendetes Farbschema |
+|| Begriff || Tabelle ||
+| cidColor | Farbe der Versicherungsgesellschaft, gemäss Corporate Identity |
+| fophNr | BAG-Nummer - Nummer, welche vom Bundesamt für Gesundheit einem Krankenversicherer vergeben wird. |
+| insuranceProvider | Versicherungsgesellschaft. |

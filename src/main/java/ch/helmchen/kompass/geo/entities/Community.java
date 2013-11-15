@@ -142,6 +142,7 @@ public class Community implements Serializable, Versionable {
         hash = 71 * hash + id;
         return hash;
     }
+    
 
     @Override
     public boolean equals(final Object obj) {

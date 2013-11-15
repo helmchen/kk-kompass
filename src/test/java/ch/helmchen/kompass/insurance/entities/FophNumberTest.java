@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package ch.helmchen.kompass.insurance.entities;
+//CHECKSTYLE:OFF Test
 
 import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.util.Arrays;
@@ -17,13 +18,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-/**
- *
- * @author helmut
- */
 @RunWith(Parameterized.class)
 public class FophNumberTest {
 
+    private static String lastDescription;
     private String description;
     private String string;
     private Integer number;
@@ -36,6 +34,10 @@ public class FophNumberTest {
         this.number = number;
         this.expValue = expValue;
         this.expValid = valid;
+        if (!description.equals(lastDescription)) {
+            ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "setup", toString());
+            lastDescription = description;
+        }
     }
 
     @Parameters
@@ -46,12 +48,12 @@ public class FophNumberTest {
             {"kurznummer1", "1", 1, "0001", true},
             {"kurznummer2", "12", 12, "0012", true},
             {"kurznummer3", "123", 123, "0123", true},
-            {"langnummer1", "12345", 12345, "2345", false},
-            {"langnummer2", "123456", 123456, "3456", false},
             {"grenzwert1", "1999", 1999, "1999", true},
-            {"grenzwert2", "2000", 2000, "2000", false},
-            {"alphanumeric", "abcd", null, "abcd", false},
-            {"leer", "", 0, "0000", false},
+            {"grenzwert2", "2000", 2000, null, false},
+            {"langnummer1", "12345", 12345, null, false},
+            {"langnummer2", "123456", 123456, null, false},
+            {"alphanumeric", "abcd", null, null, false},
+            {"leer", "", 0, null, false},
             {"nulltest", null, null, null, false}
         });
     }
@@ -72,67 +74,77 @@ public class FophNumberTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of setValue method, of class FophNumber.
-     */
     @Test
     public void testSetValue() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "testcase", "testSetValue", string);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testSetValue", string);
         FophNumber instance = new FophNumber();
-
-        instance.setValue(string);
-
-        assertEquals(
-                this.expValue, instance.getValue());
+        try {
+            instance.setValue(string);
+        }
+        catch (NumberFormatException invalid) {
+            if (expValid) {
+                throw invalid;
+            }
+        }
+        assertEquals(expValue, instance.getValue());
     }
 
-    /**
-     * Test of isValid method, of class FophNumber.
-     */
     @Test
     public void testIsValidString() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "testcase", "testIsValidString", string);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testIsValidString", string);
         boolean result = FophNumber.isValid(string);
-
         assertEquals(expValid, result);
     }
 
-    /**
-     * Test of isValid method, of class FophNumber.
-     */
     @Test
     public void testIsValidNumber() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "testcase", "testIsValidNumber", number);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testIsValidNumber", number);
         boolean result = FophNumber.isValid(number);
-
         assertEquals(expValid, result);
     }
 
-    /**
-     * Test of valueOf method, of class FophNumber.
-     */
     @Test
     public void testValueOfString() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "testcase", "testValueOfString", string);
-        FophNumber result = FophNumber.valueOf(string);
-        if (string == null || string.isEmpty()) {
-            assertEquals(null, result);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValueOfString", string);
+        FophNumber result = null;
+        try {
+            result = FophNumber.valueOf(string);
+        }
+        catch (NumberFormatException invalid) {
+            if (expValid) {
+                throw invalid;
+            }
+
+        }
+        if (expValid) {
+            assertEquals(expValue, result.getValue());
         } else {
-            assertEquals(this.expValue, result.getValue());
+            assertEquals(null, result);
         }
     }
 
-    /**
-     * Test of valueOf method, of class FophNumber.
-     */
     @Test
     public void testValueOfNumber() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "testcase", "testValueOfNumber", number);
-        FophNumber result = FophNumber.valueOf(number);
-        if (number == null || number < 1) {
-            assertEquals(null, result);
-        } else {
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValueOfNumber", number);
+        FophNumber result = null;
+        try {
+            result = FophNumber.valueOf(number);
+        }
+        catch (NumberFormatException invalid) {
+            if (expValid) {
+                throw invalid;
+            }
+        }
+        if (expValid) {
             assertEquals(expValue, result.getValue());
+        } else {
+            assertEquals(null, result);
         }
     }
+
+    @Override
+    public String toString() {
+        return "FophNumberTest{" + "description=" + description + ", string=" + string + ", number=" + number + ", expValue=" + expValue + ", expValid=" + expValid + '}';
+    }
+
 }

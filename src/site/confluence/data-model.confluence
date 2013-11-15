@@ -10,6 +10,21 @@ h3. Metadaten
 
 h3. geografische Informationen
 
+h4. PoliticalStructure
+
+Dient der Abbildung von Strukturen bei den geografischen Daten.
+
+|| Attribut || Datentyp || Beschreibung ||
+| ID | Integer | interne Id des Tupels | 
+| STRUCTURE_NUMBER | fachlicher Schlüssel, beinhaltet die gesamte Hierarchie, z.B. 756.01 für den Kanton Zürich |
+| VERSION | Integer | Historisierung des Datensatzes. |
+| LEVEL | Integer | Tiefe der Struktur des Elements, beginnend bei 0. Entspricht der Anzahl Punkte in der STRUCTURE_NUMBER |
+| CODE | varchar(24) | Fachlicher Code des geografischen Elements, z.B. Kantonscode oder eine Postleitzahl |
+| NAME | varchar(64) | Bezeichnung des geografischen Elements in der Amtssprache des geografischen Elements |
+| LATITUTE | double | Längengrad |
+| LONGITUDE | double | Breitengrad |
+| ACCURACY | Integer | Genauigkeit der Koordinaten |
+
 h3. Versicherer
 
 h3. Prämiendaten

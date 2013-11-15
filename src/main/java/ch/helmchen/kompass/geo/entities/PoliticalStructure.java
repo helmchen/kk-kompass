@@ -35,6 +35,8 @@ public class PoliticalStructure {
     @XmlAttribute
     private int version;
     @NotNull
+    private int level;
+    @NotNull
     private String code;
     @NotNull
     private String name;
@@ -94,6 +96,14 @@ public class PoliticalStructure {
      */
     public void setVersion(final int aVersion) {
         version = aVersion;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     /**
@@ -200,10 +210,8 @@ public class PoliticalStructure {
 
     @Override
     public String toString() {
-        return "PoliticalStructure{" + "id=" + id + ", structureNumber=" + structureNumber 
-                + ", version=" + version + ", code=" + code + ", name=" + name 
-                + ", latitude=" + latitude + ", longitude=" + longitude 
-                + ", accuracy=" + accuracy + '}';
+        return "PoliticalStructure{" + "id=" + id + ", structureNumber=" + structureNumber + ", version=" + version + ", level=" + level + ", code=" + code + ", name=" + name + ", latitude=" + latitude + ", longitude=" + longitude + ", accuracy=" + accuracy + '}';
     }
 
+ 
 }

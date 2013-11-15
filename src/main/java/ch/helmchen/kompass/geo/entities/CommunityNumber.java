@@ -18,7 +18,8 @@ import javax.xml.bind.annotation.XmlValue;
 
 /**
  * The community number of swiss communities. The number is maintained by the Bundesamt für Statistik
- * (BFS).
+ * (BFS). Intern wird die Nummer immer fünfstellig gehalten, um einen alphanumerischen Vergleich zu 
+ * vereinfachen.
  *
  * @author helmut
  */
@@ -33,13 +34,13 @@ public class CommunityNumber implements Locatable, Serializable {
     private String value;
 
     /**
-     *
+     * Erstellt eine neue Instanz dieser Klasse.
      */
     public CommunityNumber() {
     }
 
     /**
-     *
+     * Erstellt eine neue Instanz dieser Klasse. Dabei kann der Wert bereits mitgegeben werden.
      * @param aValue
      */
     public CommunityNumber(final String aValue) {
@@ -47,7 +48,7 @@ public class CommunityNumber implements Locatable, Serializable {
     }
 
     /**
-     *
+     * Liefert den Wert zurück.
      * @return
      */
     public String getValue() {
@@ -55,7 +56,7 @@ public class CommunityNumber implements Locatable, Serializable {
     }
 
     /**
-     *
+     * Setzt den Wert der Gemeindenummer.
      * @param aValue
      */
     public void setValue(final String aValue) {
@@ -83,7 +84,7 @@ public class CommunityNumber implements Locatable, Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }

@@ -120,6 +120,10 @@ public class FophNumber implements Serializable, Comparable<FophNumber> {
      * @return value with 4 chars.
      */
     private static String toRightSize(final String aString) {
+        // Werte nur bis 2000 erlaubt.
+        if (! isValid(aString)) {
+            throw new NumberFormatException("'" + aString + "' is not in the allowed range.");
+        }
         return AlphanumericKey.asKey(aString, 4);
     }
 

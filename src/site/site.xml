@@ -51,6 +51,8 @@
         <menu name="Übersicht" inherit="top">
             <item name="Startseite" href="index.html"/>
             <item name="Ziele" href="mission.html"/>
+            <item name="Über" href="about.html"/>
+            <item name="Glossar" href="glossary.html"/>
             <item name="Release Notes" href="changes-report.html" />
         </menu>
         <menu name="Dokumentation" inherit="top" >
@@ -62,6 +64,10 @@
             <item name="Layout" href="layout.html" collapse="true">
                 <item name="Nutzerführung" href="layout-sketches.html" />
                 <item name="Farbschema" href="layout-colorSheme.html" />
+                <item name="Grafiken" href="layout-images.html" />
+            </item>
+            <item name="Funktionalität" href="functions.html" collapse="true">
+                <item name="Rest API" href="functions-rest.html" />
             </item>
             <!--
         <item collapse=.. ref=.. name=.. href=.. img=.. position=.. alt=.. border=.. width=.. height=.. target=.. title=.. >

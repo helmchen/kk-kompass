@@ -8,6 +8,8 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
+import ch.helmchen.kompass.insurance.entities.FophNumberTest;
+import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.After;
@@ -47,14 +49,14 @@ public class CantonTest {
      */
     @Test
     public void testValues() {
-        System.out.println("values");
-        Canton[] result = Canton.values();
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testValues");
+         Canton[] result = Canton.values();
         assertEquals(26, result.length);
     }
     
     @Test
     public void testUniqueGeoIds() {
-        System.out.println("testUniqueGeoIds");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testUniqueGeoIds");
         Set<Integer> uniqueIds = new HashSet<Integer>();
         for (Canton canton:Canton.values()) {
             uniqueIds.add(canton.asGeoId());
@@ -68,7 +70,7 @@ public class CantonTest {
      */
     @Test
     public void testValueOf() {
-        System.out.println("valueOf");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testValueOf");
         String name = "BE";
         Canton expResult = Canton.BE;
         Canton result = Canton.valueOf(name);
@@ -81,7 +83,7 @@ public class CantonTest {
      */
     @Test
     public void testFromGeoIdAg() {
-        System.out.println("fromGeoIdAg");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testFromGeoIdAg");
         int aGeoId = 19;
         Canton expResult = Canton.AG;
         Canton result = Canton.fromGeoId(aGeoId);
@@ -93,7 +95,7 @@ public class CantonTest {
      */
     @Test
     public void testFromGeoIdBe() {
-        System.out.println("fromGeoId");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testFromGeoIdBe");
         int aGeoId = 2;
         Canton expResult = Canton.BE;
         Canton result = Canton.fromGeoId(aGeoId);
@@ -105,7 +107,7 @@ public class CantonTest {
      */
     @Test
     public void testFromDbKeyAg() {
-        System.out.println("fromDbKey");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testFromDbKeyAg");
         String aRecordKey = "19";
         Canton expResult = Canton.AG;
         Canton result = Canton.fromDbKey(aRecordKey);
@@ -116,7 +118,7 @@ public class CantonTest {
      */
     @Test
     public void testFromDbKeyBe() {
-        System.out.println("fromDbKey");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testFromDbKeyBe");
         String aRecordKey = "02";
         Canton expResult = Canton.BE;
         Canton result = Canton.fromDbKey(aRecordKey);
@@ -128,7 +130,7 @@ public class CantonTest {
      */
     @Test
     public void testAsGeoIdAg() {
-        System.out.println("asGeoId");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testAsGeoIdAg");
         Canton instance = Canton.AG;
         Integer expResult = new Integer(19);
         Integer result = instance.asGeoId();
@@ -139,7 +141,7 @@ public class CantonTest {
      */
     @Test
     public void testAsGeoIdBe() {
-        System.out.println("asGeoId");
+        ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testAsGeoIdBe");
         Canton instance = Canton.BE;
         Integer expResult = new Integer(2);
         Integer result = instance.asGeoId();
@@ -151,7 +153,7 @@ public class CantonTest {
      */
     @Test
     public void testAsDbKeyAg() {
-        System.out.println("asDbKey");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testAsDbKeyAg");
         Canton instance = Canton.AG;
         String expResult = "19";
         String result = instance.asDbKey();
@@ -162,11 +164,10 @@ public class CantonTest {
      */
     @Test
     public void testAsDbKeyBe() {
-        System.out.println("asDbKey");
+       ApplicationInfo.info(CantonTest.class, ApplicationInfo.TEST, "unitTest", "testAsDbKeyBe");
         Canton instance = Canton.BE;
         String expResult = "02";
         String result = instance.asDbKey();
         assertEquals(expResult, result);
-    }
-    
+    }  
 }
