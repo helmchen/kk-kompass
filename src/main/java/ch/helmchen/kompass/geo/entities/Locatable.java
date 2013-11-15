@@ -12,8 +12,8 @@ package ch.helmchen.kompass.geo.entities;
  * Deklariert die Id eines Objektes, welches in der PoliticalStructure abgelegt und auf einer
  * Landkarte angezeigt werden kann. Das Locatable liefert mindestens zwei Werte zurück<ul>
  * <li>die GeoId, welche als Referenz für GeoJson dient</li>
- * <li>die DB-Repräsenetation der GeoId. Diese ist als String aufbereitet und von Vorteil immer
- * gleich lang.</ul>
+ * <li>die DB-Repräsenetation der GeoId. Diese ist als String aufbereitet und von Vorteil immer gleich
+ * lang.</ul>
  *
  * @author helmut
  */
@@ -21,9 +21,10 @@ public interface Locatable {
 
     /**
      * Liefert die geoID des Objektes. Diese Geo-Id wird von GeoJson zur Identifikation eines Objektes
-     * auf der Karte verwendet. Der Wert ist immer numerisch und entspricht in der Schweiz der 
+     * auf der Karte verwendet. Der Wert ist immer numerisch und entspricht in der Schweiz der
      * offiziellen (Gmeinde- oder Amt-) Nummer, welche vom BFS (Bundesamt für Statistik) vergeben
      * wird.
+     *
      * @return Numerische Id für GeoJson.
      */
     Integer asGeoId();

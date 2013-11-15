@@ -138,9 +138,9 @@ public enum Canton implements Locatable {
      * Liefert die Kantonsrepräsentation, welche der übergebenen GeoId entspricht. Diese Methode
      * liefert niemals <tt>null</tt>.
      *
-     * @param aGeoId  Id gemäss geoJson
+     * @param aGeoId Id gemäss geoJson
      * @return Kanton zum übergebenen Wert.
-     * @throws IllegalArgumentException  wenn zur Id kein Kanton existiert.
+     * @throws IllegalArgumentException wenn zur Id kein Kanton existiert.
      */
     public static Canton fromGeoId(final int aGeoId) throws IllegalArgumentException {
         for (Canton canton : values()) {
@@ -155,17 +155,17 @@ public enum Canton implements Locatable {
      * Liefert die Kantonsrepräsentation, welche dem übergebenen DB-Key entspricht. Diese Methode
      * liefert niemals <tt>null</tt>.
      *
-     * @param aRecordKey  Id aus der Datenbank (z.B. Teilschlüssel aus {@link StructureNumber}.
+     * @param aRecordKey Id aus der Datenbank (z.B. Teilschlüssel aus {@link StructureNumber}.
      * @return Kanton zum übergebenen Wert.
-     * @throws IllegalArgumentException  wenn zur Id kein Kanton existiert.
+     * @throws IllegalArgumentException wenn zur Id kein Kanton existiert.
      */
-    public static Canton fromDbKey(final String aRecordKey)  throws IllegalArgumentException {
+    public static Canton fromDbKey(final String aRecordKey) throws IllegalArgumentException {
         for (Canton canton : values()) {
             if (canton.asDbKey().equals(aRecordKey)) {
                 return canton;
             }
         }
-        throw new IllegalArgumentException("'" + aRecordKey 
+        throw new IllegalArgumentException("'" + aRecordKey
                 + "' is not a valid recordKey for a canton.");
     }
 

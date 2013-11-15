@@ -8,6 +8,8 @@
  */
 package ch.helmchen.kompass.geo.entities;
 
+//CHECKSTYLE:OFF Unit Test.
+
 import ch.helmchen.kompass.insurance.entities.FophNumberTest;
 import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.util.HashSet;

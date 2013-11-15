@@ -6,3 +6,43 @@ Diese Anwendung wurde erstellt von helmchen.
   <test id="t1">Hallo Welt</test>
 </xml>
 {code}
+
+Unterstützte Concluence Syntax:
+
+h1. Titel 1
+h2. Titel 2
+h3. Titel 3
+h4. Titel 4
+h5. Titel 5
+
+- Aufzählung Typ 1
+- Nächster Punkt
+
+* Aufzählung Typ 2
+** Unterpunkt
+** noch ein Unterpunkt
+* Nochmals ein Hauptpunkt.
+
+# Nummerierte Liste
+## auch mit Unterpunkten
+## die gezählt werden.
+# nochmals ein Hauptpunkt
+
+|| Tabellenspalte 1 || Tabellenspalte 2 ||
+| Tabellenzelle 1 1 | Tabellenzelle 2 1 |
+| Tabellenzelle 1 2 | Tabellenzelle 2 2 |
+
+Textformatierungen:
+*Fetter Text* 
+_kursiv_ 
+-gelöscht- 
++eingefügt+ 
+^hochgestellt^ 
+~tiefgestellt~ 
+{{Fixe Schrift}}
+
+Trennlinie:
+
+----
+
+Link auf [http://www.helmchen.ch] und einer zu [about.html#Titel_1].

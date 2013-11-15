@@ -10,6 +10,8 @@ package ch.helmchen.kompass.geo.entities;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,6 +37,7 @@ public class PoliticalStructure {
     @XmlAttribute
     private int version;
     @NotNull
+    @Enumerated(EnumType.ORDINAL)
     private StructureDepth level;
     @NotNull
     private String code;
@@ -42,94 +45,116 @@ public class PoliticalStructure {
     private String name;
 
     /**
-     *
+     * Erstellt eine neue Instanz.
      */
     public PoliticalStructure() {
     }
 
     /**
+     * Liefert die interne Id des Tupels.
      *
-     * @return
+     * @return id.
      */
     public int getId() {
         return id;
     }
 
     /**
+     * Setzt die interne Id des Tupels.
      *
-     * @param anId
+     * @param anId interne Id.
      */
     public void setId(final int anId) {
         id = anId;
     }
 
     /**
+     * Liefert die Strukturnummer zurück. Diese definiert den kompletten hierarchischen fachlichen
+     * Schlüssel, getrennt jeweils durch einen Punkt.
      *
-     * @return
+     * @return fachlicher Schlüssel.
      */
     public StructureNumber getStructureNumber() {
         return structureNumber;
     }
 
     /**
+     * Setzt die Strukturnummer. d.H. den fachlichen Key.
      *
-     * @param aStructureNumber
+     * @param aStructureNumber Strukturnummer
      */
     public void setStructureNumber(final StructureNumber aStructureNumber) {
         structureNumber = aStructureNumber;
     }
 
     /**
+     * Liefert die Version zurück.
      *
-     * @return
+     * @return Versionsnummer.
      */
     public int getVersion() {
         return version;
     }
 
     /**
+     * Setzt die Version.
      *
-     * @param aVersion
+     * @param aVersion Versionsnummer.
      */
     public void setVersion(final int aVersion) {
         version = aVersion;
     }
 
+    /**
+     * Liefert den Level also die Tiefe der Struktur.
+     *
+     * @return Level der Struktur.
+     */
     public StructureDepth getLevel() {
         return level;
     }
 
-    public void setLevel(StructureDepth level) {
-        this.level = level;
+    /**
+     * Setzt den Level, also die Tiefe der Struktur.
+     *
+     * @param aLevel Tiefe.
+     */
+    public void setLevel(final StructureDepth aLevel) {
+        level = aLevel;
     }
 
     /**
+     * Liefert den Code dieses Elements. Je nach Art / Tiefe kann dies z.B. ein Kantonskürzel oder
+     * eine Postleitzahl, etc. sein.
      *
-     * @return
+     * @return fachlicher Code von genau diesem Element.
      */
     public String getCode() {
         return code;
     }
 
     /**
+     * Setzt den Code des Elements.
      *
-     * @param aCode
+     * @param aCode fachlicher Code
      */
     public void setCode(final String aCode) {
         code = aCode;
     }
 
     /**
+     * Liefert den Namen
      *
-     * @return
+     * @return Name des Elements.
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Setzt den Namen des Elements.
      *
-     * @param aName
+     * @param aName Name
      */
     public void setName(final String aName) {
         name = aName;
@@ -143,7 +168,7 @@ public class PoliticalStructure {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -156,5 +181,12 @@ public class PoliticalStructure {
         }
         return true;
     }
-    
+
+    @Override
+    public String toString() {
+        return "PoliticalStructure{" + "id=" + id + ", structureNumber=" + structureNumber 
+                + ", version=" + version + ", level=" + level + ", code=" + code 
+                + ", name=" + name + '}';
+    }
+
 }

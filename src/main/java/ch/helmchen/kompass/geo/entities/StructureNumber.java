@@ -10,11 +10,14 @@ package ch.helmchen.kompass.geo.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.StringTokenizer;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.xml.bind.annotation.XmlValue;
 
 /**
+ * Hierarchischer Schlüssel für die Abbildung von hierarchischen Strukturen. Die unterschiedlichen
+ * Tokens der Nummer sollten dabei die gleiche Länge haben. Als Token Delimiter dient dabei ein Punkt.
  *
  * @author helmut
  */
@@ -28,36 +31,40 @@ public class StructureNumber implements Serializable {
     private String value;
 
     /**
-     *
+     * Erstellt eine neue Instanz.
      */
     public StructureNumber() {
     }
 
     /**
+     * Erstellt eine neue Instanz. Dabei wird der komplette Key als Schlüssel mitgegeben.
      *
-     * @param aValue
+     * @param aValue Wert, welcher als StructureNumber zu übernehmen ist.
      */
     public StructureNumber(final String aValue) {
         value = aValue;
     }
 
     /**
-     *
-     * @param aValue
-     * @return
+     * Erstellt eine neue Instanz aus dem übergebenen String.
+     * @param aValue Wert, welcher als StructureNumber verwendet werden soll.
+     * @return Erstellte StructureNumber.
      */
     public static StructureNumber valueOf(String aValue) {
         return new StructureNumber(aValue);
     }
 
     /**
+     * Erstellt eine StrucctureNumber anhand von Land, Kanton und Prämienregionscode. Dieser
+     * Konstructor ist für die Abbildung der Prämienregionen gedacht.
      *
-     * @param aCountry
-     * @param aCanton
-     * @param aZone
-     * @return
+     * @param aCountry Land
+     * @param aCanton Kanton
+     * @param aZone Prämienregion im Kanton.
+     * @return StructureNumer aus den übergebenen Parametern.
      */
-    public static StructureNumber valueOf(final Country aCountry, final Canton aCanton, final String aZone) {
+    public static StructureNumber valueOf(
+            final Country aCountry, final Canton aCanton, final String aZone) {
         StringBuilder key = new StringBuilder();
         key.append(aCountry.asDbKey());
         key.append(DELIMITER);
@@ -68,9 +75,11 @@ public class StructureNumber implements Serializable {
     }
 
     /**
+     * Erstellt eine StructureNumber aus beliebigen Locatable-Teilen.
      *
-     * @param components
-     * @return
+     * @param components Locatables, aus welchen die Strukturnummer erstellt werden soll. Die
+     * Komponenten müssen dabei in ihrer hierarchischen Reihenfolge übergeben werden.
+     * @return Strukturnummer aus den übergebenen Komponenten.
      */
     public static StructureNumber valueOf(final Locatable... components) {
         if (components == null) {
@@ -86,26 +95,29 @@ public class StructureNumber implements Serializable {
         }
         return new StructureNumber(key.toString());
     }
-    
+
     /**
+     * Liefert den Wert zurück.
      *
-     * @return
+     * @return Wert.
      */
     public String getValue() {
         return value;
     }
 
     /**
+     * Setzt den Wert der Strukturnummer.
      *
-     * @param value
+     * @param aValue Wert.
      */
-    public void setValue(final String value) {
-        this.value = value;
+    public void setValue(final String aValue) {
+        value = aValue;
     }
 
     /**
+     * Liefert die Strukturtiefe dieses Elements.
      *
-     * @return
+     * @return Strukturtiefe.
      */
     public StructureDepth getDepth() {
         if (value == null || value.isEmpty()) {
@@ -123,6 +135,28 @@ public class StructureNumber implements Serializable {
         }
         //undefined
         return null;
+    }
+
+    /**
+     * Liefert das Elternelement von diesem Key zurück.
+     *
+     * @return Elternelement.
+     */
+    public StructureNumber getParent() {
+        final int iOwnDepth = getDepth().ordinal();
+        final StringBuilder result = new StringBuilder();
+        final StringTokenizer stoParts = new StringTokenizer(value, String.valueOf(DELIMITER));
+        int iCurrentDepth = 0;
+        while (stoParts.hasMoreTokens()) {
+            if (iCurrentDepth++ >= iOwnDepth) {
+                break;
+            }
+            if (iCurrentDepth > 1) {
+                result.append(DELIMITER);
+            }
+            result.append(stoParts.nextToken());
+        }
+        return StructureNumber.valueOf(result.toString());
     }
 
     @Override

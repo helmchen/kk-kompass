@@ -21,7 +21,7 @@ public enum Country implements Locatable {
      * Schweiz.
      */
     SWITZERLAND("CH", 756);
-    private static final int FiELD_SIZE = 3;
+    private static final int FIELD_SIZE = 3;
     private final int geoId;
     private final String iso3166;
 
@@ -64,7 +64,7 @@ public enum Country implements Locatable {
     /**
      * Liefert das Land anhand des DB-KEys.
      * @param aRecordKey  D-Key
-     * @return
+     * @return Country.
      */
     public static Country fromDbKey(final String aRecordKey) {
         for (Country country : values()) {
@@ -83,7 +83,7 @@ public enum Country implements Locatable {
 
     @Override
     public String asDbKey() {
-        return AlphanumericKey.asKey(geoId, FiELD_SIZE);
+        return AlphanumericKey.asKey(geoId, FIELD_SIZE);
     }
 
     /**

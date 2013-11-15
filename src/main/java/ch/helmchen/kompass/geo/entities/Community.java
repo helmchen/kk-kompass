@@ -60,7 +60,8 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Liefert die interne Id der Gemeinde zurück.
-     * @return  interne DB-Id.
+     *
+     * @return interne DB-Id.
      */
     public int getId() {
         return id;
@@ -68,7 +69,8 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Setzt die interne DB-Id.
-     * @param anId  Datenbank-Id
+     *
+     * @param anId Datenbank-Id
      */
     public void setId(final int anId) {
         id = anId;
@@ -76,6 +78,7 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Liefert die Gemeindenummer gemäss BFS.
+     *
      * @return Gemeindenummer.
      */
     public CommunityNumber getCommunityNumber() {
@@ -84,7 +87,8 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Setzt die Gemeindenummer.
-     * @param aCommunityNumber  Gemeindenummer.
+     *
+     * @param aCommunityNumber Gemeindenummer.
      */
     public void setCommunityNumber(final CommunityNumber aCommunityNumber) {
         communityNumber = aCommunityNumber;
@@ -97,7 +101,8 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Setzt die Versionsnummer.
-     * @param aVersion  Versionsnummer.
+     *
+     * @param aVersion Versionsnummer.
      */
     public void setVersion(final int aVersion) {
         version = aVersion;
@@ -105,6 +110,7 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Liefert die Strukturnummer dieser Gemeinde.
+     *
      * @return Strukturnummer.
      */
     public StructureNumber getStructureNumber() {
@@ -113,7 +119,8 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Setzt die Strukturnummer der Gemeinde.
-     * @param aStructureNumber  Strukturnummer
+     *
+     * @param aStructureNumber Strukturnummer
      */
     public void setStructureNumber(final StructureNumber aStructureNumber) {
         structureNumber = aStructureNumber;
@@ -122,6 +129,7 @@ public class Community implements Serializable, Versionable {
     /**
      * Liefert die Zone für die OKP-Berechnung. Diese ist im Format <tt>land.kanton.prämienregion</tt>
      * also z.B. <tt>386.01.2</tt>.
+     *
      * @return Zone für Grundversicherung.
      */
     public String getOhiZone() {
@@ -130,6 +138,7 @@ public class Community implements Serializable, Versionable {
 
     /**
      * Setzt die Zone für die OKP-Prämienberechnung.
+     *
      * @param anOhiZone Zone der Grundversicherung.
      */
     public void setOhiZone(final String anOhiZone) {
@@ -142,7 +151,6 @@ public class Community implements Serializable, Versionable {
         hash = 71 * hash + id;
         return hash;
     }
-    
 
     @Override
     public boolean equals(final Object obj) {

@@ -215,7 +215,11 @@ public class Population {
 
     @Override
     public String toString() {
-        return "Population{" + "id=" + id + ", structureNumber=" + structureNumber + ", version=" + version + ", totalCount=" + totalCount + ", maleCount=" + maleCount + ", femaleCount=" + femaleCount + ", childrenCount=" + childrenCount + ", teenCount=" + teenCount + ", adultCount=" + adultCount + '}';
+        return "Population{" + "id=" + id + ", structureNumber=" + structureNumber 
+                + ", version=" + version + ", totalCount=" + totalCount 
+                + ", maleCount=" + maleCount + ", femaleCount=" + femaleCount 
+                + ", childrenCount=" + childrenCount + ", teenCount=" + teenCount 
+                + ", adultCount=" + adultCount + '}';
     }
 
 }
