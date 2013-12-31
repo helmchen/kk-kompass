@@ -11,28 +11,24 @@ package ch.helmchen.kompass.meta.entities;
 public enum DataPoolType {
 
     /**
-     *
+     * Geodaten.
      */
     GEOADATA,
-
     /**
-     *
+     * Versicherungsdaten.
      */
     INSURANCE,
-
     /**
-     *
+     * Verbreitung / Grösse der Versicherung.
      */
     SPREADING,
-
     /**
-     *
+     * Prämien und zugeordnete Gebiete, wie z.B. die Zuordnung von Prämienregionen zu Gemeinden.
      */
     PRIMES,
-
     /**
-     *
+     * Leistungen.
      */
     BENEFITS
-    
+
 }

@@ -11,9 +11,9 @@ import ch.helmchen.kompass.util.BusinessException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
-import javax.ejb.PostActivate;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -36,15 +36,18 @@ public class MetaResource {
         DB_CODEC = new MySQLCodec(MySQLCodec.Mode.STANDARD);
         DF = DateFormat.getDateInstance(DateFormat.SHORT);
     }
-    @Inject
+    @EJB
     MetaService metaService;
 
     /**
      *
      */
-    @PostActivate
+    @PostConstruct
     public void afterInit() {
-        ApplicationInfo.info(MetaResource.class, ApplicationInfo.SYSTEM, "beanCreated", this);
+        if (metaService==null) {
+            ApplicationInfo.warn(MetaResource.class, ApplicationInfo.SYSTEM, ApplicationInfo.MISSING_RESOURCE, MetaService.class.getName());            
+        }
+        ApplicationInfo.info(MetaResource.class, ApplicationInfo.SYSTEM, ApplicationInfo.BEAN_CREATED, this);
     }
 
     /**
@@ -56,7 +59,7 @@ public class MetaResource {
      */
     @GET
     public DataPool getDataPool(@PathParam("dataPoolType") final String aDataPoolType, @PathParam("validAt") final String aDate) throws BusinessException {
-        ApplicationInfo.info(MetaResource.class, ApplicationInfo.VALIDATION, "receivedRequest", aDataPoolType, aDate);
+        ApplicationInfo.info(MetaResource.class, ApplicationInfo.VALIDATION, ApplicationInfo.RECEIVED_REQUEST, aDataPoolType, aDate);
         return metaService.getDataPool(secureDataPoolType(aDataPoolType), secureDate(aDate));
     }
 
@@ -64,7 +67,7 @@ public class MetaResource {
         try {
             final String strDataPoolType = DB_CODEC.decode(aDataPoolType);
             final DataPoolType result = DataPoolType.valueOf(strDataPoolType.toUpperCase());
-            ApplicationInfo.debug(MetaResource.class, ApplicationInfo.SECURITY, "paramDecoded", aDataPoolType, result);
+            ApplicationInfo.debug(MetaResource.class, ApplicationInfo.SECURITY, ApplicationInfo.PARAM_DECODED, aDataPoolType, result);
             return result;
         } catch (Exception ex) {
             throw new BusinessException("error during secureDate", ex);
@@ -78,9 +81,9 @@ public class MetaResource {
             try {
                 result = DF.parse(strValidAt);
             } catch (ParseException ex) {
-                throw new IllegalArgumentException(ApplicationInfo.getMessage(ApplicationInfo.VALIDATION, "illegalArgumentValue"), ex);
+                throw new IllegalArgumentException(ApplicationInfo.getMessage(ApplicationInfo.VALIDATION, ApplicationInfo.ILLEGAL_ARGUMENT_VALUE), ex);
             }
-            ApplicationInfo.debug(MetaResource.class, ApplicationInfo.SECURITY, "paramDecoded", aDate, result);
+            ApplicationInfo.debug(MetaResource.class, ApplicationInfo.SECURITY, ApplicationInfo.PARAM_DECODED, aDate, result);
             return result;
         } catch (Exception ex) {
             throw new BusinessException("error during secureDate", ex);

@@ -18,6 +18,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -34,7 +36,39 @@ import javax.xml.bind.annotation.XmlAttribute;
  * @author helmut
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = Community.QUERY_FIND_BY_COMMUNITY_NUMBER,
+            query
+            = "SELECT c FROM Community c"
+            + " WHERE c.communityNumber = :" + Community.PARAM_COMMUNITY_NUMBER
+            + "   AND c.version = :" + Community.PARAM_VERSION)
+})
+
 public class Community implements Serializable, Versionable {
+
+    /**
+     * Name des Named-Queries, um mehrere Entities anhand des Codes zu laden. Es wird eine Suche mit
+     * folgenden Parametern ausgelöst:<ul>
+     * <li>PARAM_CODE (like)</li>
+     * <li>PARAM_VERSION (=)</li>
+     * <li>PARAM_DEEPEST_LEVEL (&gt;=)</li>
+     * <li>PARAM_HIGHEST_LEVEL (&lt;=)</li></ul>
+     */
+    public static final String QUERY_FIND_BY_COMMUNITY_NUMBER
+            = Community.BEAN_PREFIX + "findByCommunityNumber";
+
+    /**
+     * SQL-Query-Parameter: Name des Datenpools.
+     */
+    public static final String PARAM_COMMUNITY_NUMBER = "aCommunityNumber";
+
+    /**
+     * SQL-Query Parameter: Stichdatum.
+     */
+    public static final String PARAM_VERSION = "aVersion";
+
+    private static final String BEAN_PREFIX = "ch.helmchen.kompass.geo.Community."
+            + ApplicationInfo.API_VERSION + ".";
 
     private static final int OHI_ZONE_FIELD_SIZE = 8;
 

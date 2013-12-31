@@ -35,7 +35,7 @@ public class FophNumberTest {
         this.expValue = expValue;
         this.expValid = valid;
         if (!description.equals(lastDescription)) {
-            ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "setup", toString());
+            ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.SETUP, toString());
             lastDescription = description;
         }
     }
@@ -76,7 +76,7 @@ public class FophNumberTest {
 
     @Test
     public void testSetValue() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testSetValue", string);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testSetValue", string);
         FophNumber instance = new FophNumber();
         try {
             instance.setValue(string);
@@ -91,21 +91,21 @@ public class FophNumberTest {
 
     @Test
     public void testIsValidString() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testIsValidString", string);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testIsValidString", string);
         boolean result = FophNumber.isValid(string);
         assertEquals(expValid, result);
     }
 
     @Test
     public void testIsValidNumber() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testIsValidNumber", number);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testIsValidNumber", number);
         boolean result = FophNumber.isValid(number);
         assertEquals(expValid, result);
     }
 
     @Test
     public void testValueOfString() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValueOfString", string);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testValueOfString", string);
         FophNumber result = null;
         try {
             result = FophNumber.valueOf(string);
@@ -125,7 +125,7 @@ public class FophNumberTest {
 
     @Test
     public void testValueOfNumber() {
-        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValueOfNumber", number);
+        ApplicationInfo.info(FophNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testValueOfNumber", number);
         FophNumber result = null;
         try {
             result = FophNumber.valueOf(number);

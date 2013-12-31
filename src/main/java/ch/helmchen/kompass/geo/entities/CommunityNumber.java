@@ -88,6 +88,14 @@ public class CommunityNumber implements Locatable, Serializable {
         hash = 53 * hash + Objects.hashCode(value);
         return hash;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return (value == null || value.isEmpty());
+    }
 
     @Override
     public boolean equals(final Object obj) {

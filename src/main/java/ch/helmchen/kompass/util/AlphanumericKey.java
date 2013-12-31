@@ -65,7 +65,7 @@ public class AlphanumericKey {
 
         while (result.length() < aSize) {
             // String is to short: adding Zeroes to the left.
-            ApplicationInfo.debug(AlphanumericKey.class, ApplicationInfo.VALIDATION, "addingToUndersized", result, "0");
+            ApplicationInfo.debug(AlphanumericKey.class, ApplicationInfo.VALIDATION, ApplicationInfo.ADDING_TO_UNDERSIZED, result, "0");
             result.insert(0, '0');
         }
         return result.toString();

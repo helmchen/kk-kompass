@@ -39,7 +39,7 @@ public class CommunityNumberTest {
         this.valid = valid;
 
         if (!description.equals(lastDescription)) {
-            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, "setup", toString());
+            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.SETUP, toString());
             lastDescription = description;
         }
 
@@ -80,7 +80,8 @@ public class CommunityNumberTest {
     @Test
     public void testPropertyValue() {
         try {
-            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyValue", dbKey);
+            ApplicationInfo.info(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyValue", dbKey);
             CommunityNumber instance = new CommunityNumber();
             String expResult = dbKey;
             instance.setValue(expResult);
@@ -88,14 +89,16 @@ public class CommunityNumberTest {
             assertEquals(expResult, result);
         }
         catch (NumberFormatException invalidNumber) {
-            ApplicationInfo.warn(CommunityNumberTest.class, ApplicationInfo.TEST, "unhandledException", invalidNumber.getLocalizedMessage());
+            ApplicationInfo.warn(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNHANDLED_EXCEPTION, invalidNumber.getLocalizedMessage());
         }
     }
 
     @Test
     public void testPropertyValueWithConversion() {
         if (valid) {
-            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyValueWithConversion", geoKey);
+            ApplicationInfo.info(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyValueWithConversion", geoKey);
             CommunityNumber instance = new CommunityNumber();
             String expResult = dbKey;
             if (geoKey == null) {
@@ -113,7 +116,8 @@ public class CommunityNumberTest {
         if (valid) {
             throw new NumberFormatException("This testcase must fail without testing.");
         } else {
-            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyValueWithConversionErrors", geoKey);
+            ApplicationInfo.info(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyValueWithConversionErrors", geoKey);
             CommunityNumber instance = new CommunityNumber();
             String expResult = dbKey;
             if (geoKey == null) {
@@ -133,7 +137,8 @@ public class CommunityNumberTest {
     @Test
     public void testAsGeoId() {
         if (valid) {
-            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, "unitTest", "testAsGeoId", dbKey);
+            ApplicationInfo.info(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testAsGeoId", dbKey);
             CommunityNumber instance = new CommunityNumber(dbKey);
             Integer expResult = geoKey;
             if (!valid || geoKey == null || geoKey.intValue() == 0) {
@@ -152,7 +157,8 @@ public class CommunityNumberTest {
         if (valid) {
             throw new NumberFormatException("This testcase must fail without testing.");
         } else {
-            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, "unitTest", "testAsGeoId", dbKey);
+            ApplicationInfo.info(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testAsGeoId", dbKey);
             CommunityNumber instance = new CommunityNumber(dbKey);
             Integer expResult = geoKey;
             if (!valid) {
@@ -169,14 +175,16 @@ public class CommunityNumberTest {
     @Test
     public void testAsDbKey() {
         try {
-            ApplicationInfo.info(CommunityNumberTest.class, ApplicationInfo.TEST, "unitTest", "testAsDbKey", dbKey);
+            ApplicationInfo.info(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testAsDbKey", dbKey);
             CommunityNumber instance = new CommunityNumber(dbKey);
             String expResult = dbKey;
             String result = instance.asDbKey();
             assertEquals(expResult, result);
         }
         catch (NumberFormatException invalidNumber) {
-            ApplicationInfo.warn(CommunityNumberTest.class, ApplicationInfo.TEST, "unhandledException", invalidNumber.getLocalizedMessage());
+            ApplicationInfo.warn(
+                    CommunityNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNHANDLED_EXCEPTION, invalidNumber.getLocalizedMessage());
         }
 
     }

@@ -18,6 +18,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 
@@ -27,7 +29,93 @@ import javax.xml.bind.annotation.XmlAttribute;
  * @author helmut
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = PoliticalStructure.QUERY_FIND_BY_CODE,
+            query
+            = "SELECT ps FROM PoliticalStructure ps"
+            + " WHERE ps.code LIKE :" + PoliticalStructure.PARAM_CODE
+            + "   AND ps.version = :" + PoliticalStructure.PARAM_VERSION
+            + "   AND ps.level BETWEEN :" + PoliticalStructure.PARAM_DEEPEST_LEVEL + " AND :" + PoliticalStructure.PARAM_HIGHEST_LEVEL
+            + " ORDER BY ps.code"),
+    @NamedQuery(name = PoliticalStructure.QUERY_FIND_BY_NAME,
+            query
+            = "SELECT ps FROM PoliticalStructure ps"
+            + " WHERE ps.name LIKE :" + PoliticalStructure.PARAM_NAME
+            + "   AND ps.version = :" + PoliticalStructure.PARAM_VERSION
+            + "   AND ps.level BETWEEN :" + PoliticalStructure.PARAM_DEEPEST_LEVEL + " AND :" + PoliticalStructure.PARAM_HIGHEST_LEVEL
+            + " ORDER BY ps.code"),
+    @NamedQuery(name = PoliticalStructure.QUERY_FIND_BY_STRUCTURE_NUMBER,
+            query
+            = "SELECT ps FROM PoliticalStructure ps"
+            + " WHERE ps.structureNumber = :" + PoliticalStructure.PARAM_STRUCTURE_NUMBER
+            + "   AND ps.version = :" + PoliticalStructure.PARAM_VERSION),
+    @NamedQuery(name = PoliticalStructure.QUERY_FIND_CHILDREN_BY_STRUCTURE_NUMBER,
+            query
+            = "SELECT ps FROM PoliticalStructure ps"
+            + " WHERE ps.structureNumber LIKE :" + PoliticalStructure.PARAM_STRUCTURE_NUMBER
+            + "   AND ps.version = :" + PoliticalStructure.PARAM_VERSION
+            + "   AND ps.level BETWEEN :" + PoliticalStructure.PARAM_DEEPEST_LEVEL + " AND :" + PoliticalStructure.PARAM_HIGHEST_LEVEL)
+})
+
 public class PoliticalStructure {
+
+    /**
+     * Name des Named-Queries, um mehrere Entities anhand des Codes zu laden. Es wird eine Suche mit
+     * folgenden Parametern ausgelöst:<ul>
+     * <li>PARAM_CODE (like)</li>
+     * <li>PARAM_VERSION (=)</li>
+     * <li>PARAM_DEEPEST_LEVEL (&gt;=)</li>
+     * <li>PARAM_HIGHEST_LEVEL (&lt;=)</li></ul>
+     */
+    public static final String QUERY_FIND_BY_CODE
+            = PoliticalStructure.BEAN_PREFIX + "findByCode";
+
+    /**
+     *
+     */
+    public static final String QUERY_FIND_BY_NAME
+            = PoliticalStructure.BEAN_PREFIX + "findByName";
+
+    /**
+     * Name des Named-Queries, um alle Datensammlungsversionen zu einem bestimmten Stichdatum zu
+     * laden.
+     */
+    public static final String QUERY_FIND_BY_STRUCTURE_NUMBER
+            = PoliticalStructure.BEAN_PREFIX + "findByKeydate";
+    /**
+     * Name des Named-Queries, um die Versionen einer Datensammlung in einem Zeitbereich zu ermitteln.
+     */
+    public static final String QUERY_FIND_CHILDREN_BY_STRUCTURE_NUMBER
+            = PoliticalStructure.BEAN_PREFIX + "findByDatapooltypeAndDateragen";
+    /**
+     * SQL-Query-Parameter: Name des Datenpools.
+     */
+    public static final String PARAM_CODE = "aCode";
+
+    /**
+     *
+     */
+    public static final String PARAM_NAME = "aName";
+
+    /**
+     * SQL-Query-Parameter: Name des Datenpools.
+     */
+    public static final String PARAM_STRUCTURE_NUMBER = "aStructureNumber";
+
+    /**
+     * SQL-Query Parameter: Stichdatum.
+     */
+    public static final String PARAM_VERSION = "aVersion";
+    /**
+     * SQL-Query Parameter: Stichdatum ab.
+     */
+    public static final String PARAM_DEEPEST_LEVEL = "aDeepestLevel";
+    /**
+     * SQL-Query Parameter: Stichdatum bis.
+     */
+    public static final String PARAM_HIGHEST_LEVEL = "aKeyDateUntil";
+    private static final String BEAN_PREFIX = "ch.helmchen.kompass.geo.PoliticalStructure."
+            + ApplicationInfo.API_VERSION + ".";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -15,12 +15,14 @@ import static ch.helmchen.kompass.meta.entities.DataPool.QUERY_FIND_BY_KEYDATE;
 import static ch.helmchen.kompass.meta.entities.DataPool.PARAM_DATAPOOL_TYPE;
 import static ch.helmchen.kompass.meta.entities.DataPool.PARAM_VALID_AT;
 import ch.helmchen.kompass.util.EntityNotFoundException;
+import javax.ejb.LocalBean;
 
 /**
  *
  * @author helmut
  */
 @Stateless
+@LocalBean
 public class DataPoolAccess extends MetaAccess<DataPool> {
 
     @PersistenceContext

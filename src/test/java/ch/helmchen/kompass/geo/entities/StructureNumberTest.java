@@ -46,7 +46,7 @@ public class StructureNumberTest {
     @Test
     public void testValueOf_validString() {
         String aValue = "756.02.0246.00351";
-        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValueOf_validString", aValue);
+        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testValueOf_validString", aValue);
         StructureNumber expResult = new StructureNumber(aValue);
         StructureNumber result = StructureNumber.valueOf(aValue);
         assertEquals(expResult, result);
@@ -54,7 +54,7 @@ public class StructureNumberTest {
 
     @Test
     public void testValueOf_3args() {
-        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValueOf_3args");
+        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testValueOf_3args");
         Country aCountry = Country.SWITZERLAND;
         Canton aCanton = Canton.BE;
         String aZone = "1";
@@ -65,7 +65,7 @@ public class StructureNumberTest {
 
     @Test
     public void testValueOf_LocatableArr() {
-        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValueOf_LocatableArr");
+        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testValueOf_LocatableArr");
         Locatable[] components = {Country.SWITZERLAND, Canton.BE, new ProvinceNumber("246"), new CommunityNumber("351")};
         StructureNumber expResult = new StructureNumber("756.02.0246.00351");
         StructureNumber result = StructureNumber.valueOf(components);
@@ -75,7 +75,7 @@ public class StructureNumberTest {
     @Test
     public void testPropertyValue() {
         String expResult = "756.02.0246.00351";
-        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyValue", expResult);
+        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyValue", expResult);
         StructureNumber instance = new StructureNumber();
         instance.setValue(expResult);
         String result = instance.getValue();
@@ -85,7 +85,7 @@ public class StructureNumberTest {
     @Test
     public void testGetDepthCommunity() {
         StructureNumber instance = new StructureNumber("756.02.0246.00351");
-        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, "unitTest", "testValues", instance);
+        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testValues", instance);
         StructureDepth expResult = StructureDepth.COMMUNITY;
         StructureDepth result = instance.getDepth();
         assertEquals(expResult, result);
@@ -94,7 +94,7 @@ public class StructureNumberTest {
     @Test
     public void testGetDepthCanton() {
         StructureNumber instance = new StructureNumber("756.02");
-        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, "unitTest", "testGetDepthCanton", instance);
+        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testGetDepthCanton", instance);
         StructureDepth expResult = StructureDepth.STATE;
         StructureDepth result = instance.getDepth();
         assertEquals(expResult, result);
@@ -103,7 +103,7 @@ public class StructureNumberTest {
     @Test
     public void testGetParent() {
         StructureNumber instance = new StructureNumber("756.02.0246.00351");
-        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, "unitTest", "testGetParent", instance);
+        ApplicationInfo.info(StructureNumberTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testGetParent", instance);
         StructureNumber expResult = new StructureNumber("756.02.0246");
         StructureNumber result = instance.getParent();
         assertEquals(expResult, result);

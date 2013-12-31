@@ -29,6 +29,8 @@ import org.slf4j.MarkerFactory;
 @ApplicationPath("/rest")
 public class ApplicationInfo extends Application {
 
+    // ==============================================================================================
+    // Markers for Logging
     /**
      * Marker for System Messages.
      */
@@ -47,13 +49,89 @@ public class ApplicationInfo extends Application {
     public static final Marker PERFORMANCE = MarkerFactory.getMarker("performance");
 
     /**
-     *
+     * Marker for business or technical validation.
      */
     public static final Marker VALIDATION = MarkerFactory.getMarker("validation");
     /**
      * Marker for messages of the storage layer.
      */
     public static final Marker STORAGE = MarkerFactory.getMarker("storage");
+
+    // ==============================================================================================
+    // Message keys for Resources 
+    /**
+     * Message Key for validation.receivedRequest. "Received request with the following parameters:
+     * {}"
+     */
+    public static final String RECEIVED_REQUEST = "receivedRequest";
+    /**
+     * Message Key for security.paramDecoded. "Decoded value from {} to {}."
+     */
+    public static final String PARAM_DECODED = "paramDecoded";
+    /**
+     * Message Key for validation.illegalArgumentValue. "Illegal argument: Could not handle {} as {}"
+     */
+    public static final String ILLEGAL_ARGUMENT_VALUE = "illegalArgumentValue";
+    /**
+     * Message Key for storage.noVersionFoundForXAtY. "No version found for {} with key date {}"
+     */
+    public static final String NO_VERSION_FOUND_FOR_X_AT_Y = "noVersionFoundForXAtY";
+  
+    /**
+     * Message Key for storage.expectingFirstVersionFor.
+     */
+    public static final String EXPECTING_FIRST_VERSION_FOR = "expectingFirstVersionFor";
+    /**
+     * Message Key for system.copyright. "Copyright H. Gehrer 2013"
+     */
+    public static final String COPYRIGHT = "copyright";
+    /**
+     * Message Key for system.missingResource: "Resource {} is missing."
+     */
+    public static final String MISSING_RESOURCE = "missingResource";
+    /**
+     * Message Key for system.beanCreated. "Managed Worker {} created."
+     */
+    public static final String BEAN_CREATED = "beanCreated";
+    /**
+     * Message Key for validation.sending404dueToException. "Sending error 404 to client due to caught
+     * Exception: {}"
+     */
+    public static final String SENDING_ERROR_404 = "sending404dueToException";
+    /**
+     * Message Key for validation.removingFromOversized. "Value of {} is to long. Removing {}."
+     */
+    public static final String REMOVING_FROM_OVERSIZED = "removingFromOversized";
+    /**
+     * Message Key for validation.addingToUndersized. "Value {} is to short. Adding {}."
+     */
+    public static final String ADDING_TO_UNDERSIZED = "addingToUndersized";
+    /**
+     * Message Key for validation.ignoringUndersized. "Value {} is to short. Performing no action."
+     */
+    public static final String IGNORING_UNDERSIZED = "ignoringUndersized";
+    /**
+     * Message Key for test.unitTest. "Running unit test {} for value {} ... "
+     */
+    public static final String UNIT_TEST = "unitTest";
+    /**
+     * Message Key for test.integrationTest. "Running integration test {} for value {} ... "
+     */
+    public static final String INTEGRATION_TEST = "integrationTest";
+    /**
+     * Message Key for test.testcase. "Running test {} for value {} ... "
+     */
+    public static final String TESTCASE = "testcase";
+    /**
+     * Message Key for test.setup. "Test setup is {} ."
+     */
+    public static final String SETUP = "setup";
+    /**
+     * Message Key for test.unhandledException. "Unhandled Exception {} should be tested in another
+     * testcase."
+     */
+    public static final String UNHANDLED_EXCEPTION = "unhandledException";
+
     // Path to the message resources.
     private static final String MESSAGE_BUNDLE_PATH = "ch/helmchen/kompass/text/Messages";
     // currently loaded resources.
@@ -69,7 +147,7 @@ public class ApplicationInfo extends Application {
     static {
         DEFAULT_MESSAGE_BUNDLE = ResourceBundle.getBundle(MESSAGE_BUNDLE_PATH);
         locale = Locale.getDefault();
-        info(ApplicationInfo.class, SYSTEM, "copyright");
+        info(ApplicationInfo.class, SYSTEM, COPYRIGHT);
     }
 
     /**
@@ -136,7 +214,21 @@ public class ApplicationInfo extends Application {
         }
     }
 
-    public static String toShortString(final Collection<? extends Object> aCollection) {
+    /**
+     *
+     * @param aClass
+     * @param aMarker
+     * @param aKey
+     * @param theValues
+     */
+    public static void error(Class aClass, Marker aMarker, String aKey, Object... theValues) {
+        Logger logger = LoggerFactory.getLogger(aClass);
+        if (logger.isErrorEnabled(aMarker)) {
+            logger.error(aMarker, getMessage(aMarker, aKey), theValues);
+        }
+    }
+
+    private static String toShortString(final Collection<? extends Object> aCollection) {
         final StringBuilder result = new StringBuilder();
         result.append(aCollection.getClass().getName());
         result.append("@");
@@ -159,6 +251,12 @@ public class ApplicationInfo extends Application {
         return result.toString();
     }
 
+    /**
+     *
+     * @param instance
+     * @param theProperties
+     * @return
+     */
     public static String toString(final Object instance, Map<String, Object> theProperties) {
         final StringBuilder result = new StringBuilder();
         result.append(instance.getClass().getName());

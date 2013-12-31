@@ -40,7 +40,7 @@ public class CommunityTest {
 
     @Test
     public void testPropertyId() {
-        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyId");
+        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyId");
         final Community instance = new Community();
         final int expResult = 4711;
         instance.setId(expResult);
@@ -50,7 +50,7 @@ public class CommunityTest {
 
     @Test
     public void testPropertyCommunityNumber() {
-        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyCommunityNumber");
+        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyCommunityNumber");
         Community instance = new Community();
         CommunityNumber expResult = new CommunityNumber("12345");
         instance.setCommunityNumber(expResult);
@@ -60,7 +60,7 @@ public class CommunityTest {
 
     @Test
     public void testPropertyVersion() {
-        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyVersion");
+        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyVersion");
         Community instance = new Community();
         int expResult = 11;
         instance.setVersion(expResult);
@@ -70,7 +70,7 @@ public class CommunityTest {
 
     @Test
     public void testPropertyStructureNumber() {
-        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyStructureNumber");
+        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyStructureNumber");
         Community instance = new Community();
         StructureNumber expResult = new StructureNumber("CH.BE.12345");
         instance.setStructureNumber(expResult);
@@ -80,7 +80,7 @@ public class CommunityTest {
 
     @Test
     public void testPropertyOhiZone() {
-        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, "unitTest", "testPropertyOhiZone");
+        ApplicationInfo.info(CommunityTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testPropertyOhiZone");
         System.out.println("getOhiZone");
         Community instance = new Community();
         String expResult = "CH.BE.1";
