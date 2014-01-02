@@ -12,6 +12,7 @@ package ch.helmchen.kompass.util;
 import ch.helmchen.kompass.meta.ApplicationInfo;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -85,7 +86,7 @@ public class DatabaseHelperTest {
                 DatabaseHelperTest.class, ApplicationInfo.TEST, ApplicationInfo.UNIT_TEST, "testBeginsWithEmpty");
        // Date expResult = null;
         Date result = DatabaseHelper.getMaxEndDate();
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+1"));
         cal.setTime(result);
         assertEquals(3000, cal.get(Calendar.YEAR));
         assertEquals(Calendar.DECEMBER, cal.get(Calendar.MONTH));
